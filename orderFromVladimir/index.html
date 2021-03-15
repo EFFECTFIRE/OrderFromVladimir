@@ -19,7 +19,7 @@
 			</ul>
 <header class="container">
 	<div class="background-mainhead"></div>
-	<div class="container stripbar">
+	<div class="stripbar">
 		<div class="logoname">Название компании</div>
 		<ul class="menu">
 			<li><a href="#aboutUs">О нас</a></li>
@@ -28,18 +28,21 @@
 		</ul>
 		<div class="aboutUs-nav">
 			<img src="images/phone.svg" style="width: 25px; height: 25px; margin:0 5px;">
-			<div class="phone-text"><a href="tel:+79872252524">89872252524</a></div>
+			<div class="phone-text"><a href="tel:+79872252524">8(987)225-25-24</a></div>
 		</div>
 		<button class="mob-menu-icon"></button>
 	</div>
 	<div class="container mainhead">
-		<span>Something text</span>
+		<div class="mainhead-back-text">
+			<span>Something text</span>
+		</div>
 	</div>
 </header>
 <body>
 	<div class="form container">
 	<form>
 	<section class="container slide-item">
+		<h3 style="text-align: center;">В этом калькуляторе вы можете рассчитать приблизительную стоимость</h3>
 		<h2>Какое мероприятие планируете?</h2>
 		<div class="cards">
 			<label class="card_radio">
@@ -74,11 +77,13 @@
 		</div>
 	</section>
 	<section class="container slide-item" style="display: none;">
-		<h2>Выберите вид программы</h2>
+		<h2 style="margin-top: 56px; margin-bottom:26px;">Выберите вид программы</h2>
 		<div class="cards">
 			<label class="card_radio">
 				<div class="card programm">
-					<div class="background-card"></div>
+					<div class="describe">
+						<a href="" target="_blank">Подробнее</a>
+					</div>
 					<input class="custom_checkbox" type="radio" name="Program" data-programm="6 часов дневная программа">
 					<span class="radio"></span>
 					<div class="card-text">6 часов дневная программа</div>
@@ -86,6 +91,9 @@
 			</label>
 			<label class="card_radio">
 				<div class="card programm">
+					<div class="describe">
+						<a href="" target="_blank">Подробнее</a>
+					</div>
 					<input class="custom_checkbox" type="radio" name="Program" data-programm="6 часов торжественная программа">
 					<span class="radio"></span>
 					<div class="card-text">6 часов торжественная программа</div>
@@ -93,6 +101,9 @@
 			</label>
 			<label class="card_radio">
 				<div class="card programm">
+					<div class="describe">
+						<a href="files/Programma_na_4_chasa.pdf" target="_blank">Подробнее</a>
+					</div>
 					<input class="custom_checkbox" type="radio" name="Program" data-programm="4 часа дневная программа">
 					<span class="radio"></span>
 					<div class="card-text">4 часа Дневная программа</div>
@@ -100,6 +111,9 @@
 			</label>
 			<label class="card_radio">
 				<div class="card programm">
+					<div class="describe">
+						<a href="" target="_blank">Подробнее</a>
+					</div>
 					<input class="custom_checkbox" type="radio" name="Program" data-programm="4 часа вечерняя программа">
 					<span class="radio"></span>
 					<div class="card-text">4 часа Вечерняя программа</div>
@@ -107,6 +121,9 @@
 			</label>
 			<label class="card_radio">
 				<div class="card programm">
+					<div class="describe">
+						<a href="" target="" target="_blank">Подробнее</a>
+					</div>
 					<input class="custom_checkbox" type="radio" name="Program" data-programm="16 часов программа с ночевкой на базе">
 					<span class="radio"></span>
 					<div class="card-text">16 часов программа с ночевкой на базе</div>
@@ -114,14 +131,14 @@
 			</label>
 	</section>
 	<section class="container slide-item" style="display: none;">
-		<h2>Сколько человек планируется?</h2>
+		<h2 style="margin-top: 56px;">Сколько человек планируется?</h2>
 		<div class="slide-container">
 			<input class="slider" id="range" type="range" min="0" max="100" value="0">
 			<input id="valueRange"></input>
 		</div>
 	</section>
 	<section class="container slide-item" style="display: none;">
-		<h2>Опции</h2>
+		<h2 style="margin-top: 56px;">Опции</h2>
 		<div class="check_contain" style="margin-left: 2em">
 			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Фотограф"><span class="check_box"></span>Фотограф</label>
 			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Видеосъемка"><span class="check_box"></span>Видеосъемка</label>
@@ -133,7 +150,7 @@
 		</div>
 	</section>
 	<section class="container slide-item" style="display: none;">
-		<h2>Итого</h2>
+		<h2 style="margin-top: 42px;">Итого</h2>
 		<div class="results">
 			<h3>Мероприятие:</h3>
 			<div class="events"></div>
@@ -164,7 +181,7 @@
 	<div class="container maps">
 		<div class="address">
 			<h2 class="place">Место проведения</h2>
-			<div class="text-place" style="text-align: center;">Оздоровительно-образовательный центр «Костер» - это новый лагерь Республики Татарстан.
+			<div class="text-place">Оздоровительно-образовательный центр «Костер» - это новый лагерь Республики Татарстан.
 База расположена в зеленом массиве в 15 километрах от Казани. Благоустроенный корпус, охраняемая территория, смешанный лес, озеро и удаленность от городской суеты делают условия идеальными для отдыха, обучения и оздоровления.</div>
 
 			<p>РТ, Высокогорский район, поселок Бирюли, ул. Сосновая, д. 9.</p>
@@ -227,7 +244,7 @@
 				</div>
 				<div class="contacts">
 					<span>email@mail.com</span>
-					<span><a href="tel:+79872252524">89872252524</a></span>
+					<span><a href="tel:+79872252524">8(987)225-25-24</a></span>
 				</div>
 			</div>
 	</section>

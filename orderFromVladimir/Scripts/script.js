@@ -76,5 +76,10 @@ summing.onclick = function(){
 		optionsTotal.innerHTML += options[i].getAttribute('data-option') + "<br>";
 	}
 }
-
-
+var stripbar = document.querySelector(".stripbar");
+window.onscroll = function(){
+	stripbar.style.backgroundColor = "rgb(191, 173, 114, 0.9)";
+	if(window.pageYOffset == 0){
+		stripbar.style.backgroundColor = "rgba(0,0,0,0.2)";
+	}
+}
