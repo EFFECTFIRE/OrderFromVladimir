@@ -5,10 +5,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>OrderForVladimir</title>
-	<link rel="stylesheet" type="text/css" href="Styles/style.css">
+<link rel="stylesheet" type="text/css" href="Styles/style.css">
 
 </head>
-			<ul class="mob-bar">
+
+
+<body>
+	<ul class="mob-bar">
 				<li class="mob-menu-strip">
 					<div class="mob-menu-strip-logoname">Название компании</div>
 					<button class="mob-menu-icon-close"></button>
@@ -17,7 +20,7 @@
 				<li><a href="#place_nav">Место проведения</a></li>
 				<li><a href="">Контакты</a></li>
 			</ul>
-<header class="container">
+	<header class="container">
 	<div class="background-mainhead"></div>
 	<div class="stripbar">
 		<div class="logoname">Название компании</div>
@@ -34,11 +37,11 @@
 	</div>
 	<div class="container mainhead">
 		<div class="mainhead-back-text">
-			<span>Something text</span>
+			<p style="text-align: center;">ОНЛАЙН-КАЛЬКУЛЯТОР</p>
+			<p style="text-align: center;">ЗДЕСЬ ВЫ МОЖЕТЕ САМОСТОЯТЕЛЬНО РАССЧИТАТЬ СТОИМОСТЬ ВАШЕГО МЕРОПРИЯТИЯЗА 60 СЕКУНД</p>
 		</div>
 	</div>
 </header>
-<body>
 	<div class="form container">
 	<form>
 	<section class="container slide-item">
@@ -47,21 +50,21 @@
 		<div class="cards">
 			<label class="card_radio">
 				<div class="card event">
-					<input class="custom_checkbox" type="radio" name="Events" data-event="Выпускной 4 класс 9-10 лет">
+					<input class="custom_checkbox" type="radio" name="Events" data-event="Выпускной 4 класс 9-10 лет" value=0>
 					<span class="radio"></span>
 					<div class="card-text">Выпускной 4 класс 9-10 лет</div>
 				</div>
 			</label>
 			<label class="card_radio">
 				<div class="card event">
-					<input class="custom_checkbox" type="radio" name="Events" data-event="Выпускной деский сад 6-7 лет">
+					<input class="custom_checkbox" type="radio" name="Events" data-event="Выпускной деский сад 6-7 лет" value=1>
 					<span class="radio"></span>
 					<div class="card-text">Выпускной деский сад 6-7 лет</div>
 				</div>
 			</label>
 			<label class="card_radio">
 				<div class="card event">
-					<input class="custom_checkbox" type="radio" name="Events" data-event="Выездное мероприятие (Тимбилдинг) 7-17 лет">
+					<input class="custom_checkbox" type="radio" name="Events" data-event="Выездное мероприятие (Тимбилдинг) 7-17 лет" value=2>
 					<span class="radio"></span>
 					<div class="card-text"></div>
 					<div class="card-text">Выездное мероприятие (Тимбилдинг) 7-17 лет</div>
@@ -69,7 +72,7 @@
 			</label>
 			<label class="card_radio">
 				<div class="card event" style="background-image: url(images/celebration.jpg);">
-					<input class="custom_checkbox" type="radio" name="Events" data-event="День рождения от 12 участников 7-17 лет">
+					<input class="custom_checkbox" type="radio" name="Events" data-event="День рождения от 12 участников 7-17 лет" value=3>
 					<span class="radio"></span>
 					<div class="card-text">День рождения от 12 участников  7-17 лет</div>
 				</div>
@@ -84,7 +87,7 @@
 					<div class="describe">
 						<a href="files/Programma_na_4_chasa.pdf" target="_blank">Подробнее</a>
 					</div>
-					<input class="custom_checkbox" type="radio" name="Program" data-programm="Дневная программа 4 часа">
+					<input class="custom_checkbox" type="radio" name="Program" data-programm="Дневная программа 4 часа" value=0>
 					<span class="radio"></span>
 					<div class="card-text">Дневная программа 4 часа</div>
 				</div>
@@ -94,7 +97,7 @@
 					<div class="describe">
 						<a href="" target="_blank">Подробнее</a>
 					</div>
-					<input class="custom_checkbox" type="radio" name="Program" data-programm="Вечерняя программа 4 часа">
+					<input class="custom_checkbox" type="radio" name="Program" data-programm="Вечерняя программа 4 часа" value=1>
 					<span class="radio"></span>
 					<div class="card-text">Вечерняя программа 4 часа</div>
 				</div>
@@ -104,7 +107,7 @@
 					<div class="describe">
 						<a href="" target="_blank">Подробнее</a>
 					</div>
-					<input class="custom_checkbox" type="radio" name="Program" data-programm="Дневная программа 5 часов">
+					<input class="custom_checkbox" type="radio" name="Program" data-programm="Дневная программа 5 часов" value=2>
 					<span class="radio"></span>
 					<div class="card-text">Дневная программа 5 часов</div>
 				</div>
@@ -114,7 +117,7 @@
 					<div class="describe">
 						<a href="" target="_blank">Подробнее</a>
 					</div>
-					<input class="custom_checkbox" type="radio" name="Program" data-programm="Программа с ночевкой 18 часов">
+					<input class="custom_checkbox" type="radio" name="Program" data-programm="Программа с ночевкой 18 часов" value=3>
 					<span class="radio"></span>
 					<div class="card-text">Программа с ночевкой 18 часов</div>
 				</div>
@@ -130,27 +133,20 @@
 				</div>
 			</label>-->
 	</section>
-	<section class="container slide-item" style="display: none;">
-		<h2 style="margin-top: 56px;">Сколько человек планируется?</h2>
-		<div class="slide-container">
-			<input class="slider" id="range" type="range" min="12" max="32" value="12">
-			<input id="valueRange"></input>
-		</div>
-	</section>
-	<section class="container slide-item" style="display: none;">
+<!--<section class="container " style="display: none;">
 		<h2 style="margin-top: 56px;">Опции</h2>
 		<div class="check_contain" style="margin-left: 2em">
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Фотограф"><span class="check_box"></span>Фотограф</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Видеосъемка"><span class="check_box"></span>Видеосъемка</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Аниматор"><span class="check_box"></span>Аниматор</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Праздничный торт"><span class="check_box"></span>Праздничный торт</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Ведущий для программы родителям"><span class="check_box"></span>Ведущий для программы родителям</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Диджей для программы родителям"><span class="check_box"></span>Диджей для программы родителям</label>
-			<label class="option"><input id="" name="Options" class="custom_checkbox" type="checkbox" data-option="Индивидуальная фотозона на заказ"><span class="check_box"></span>Индивидуальная фотозона на заказ</label>
+			<label class="option"><input id="0" name="Options" class="custom_checkbox" type="checkbox" data-option="Фотограф"><span class="check_box"></span>Фотограф</label>
+			<label class="option"><input id="1" name="Options" class="custom_checkbox" type="checkbox" data-option="Видеосъемка"><span class="check_box"></span>Видеосъемка</label>
+			<label class="option"><input id="2" name="Options" class="custom_checkbox" type="checkbox" data-option="Аниматор"><span class="check_box"></span>Аниматор</label>
+			<label class="option"><input id="3" name="Options" class="custom_checkbox" type="checkbox" data-option="Праздничный торт"><span class="check_box"></span>Праздничный торт</label>
+			<label class="option"><input id="4" name="Options" class="custom_checkbox" type="checkbox" data-option="Ведущий для программы родителям"><span class="check_box"></span>Ведущий для программы родителям</label>
+			<label class="option"><input id="5" name="Options" class="custom_checkbox" type="checkbox" data-option="Диджей для программы родителям"><span class="check_box"></span>Диджей для программы родителям</label>
+			<label class="option"><input id="6" name="Options" class="custom_checkbox" type="checkbox" data-option="Индивидуальная фотозона на заказ"><span class="check_box"></span>Индивидуальная фотозона на заказ</label>
 		</div>
-	</section>
-	<section class="container slide-item" style="display: none;">
-		<h2 style="margin-top: 42px;">Итого</h2>
+	</section>-->
+	<section class="container slide-total" style="display: none;">
+		<h2 style="margin-top: 30px;">Итого</h2>
 		<div class="results">
 			<h3>Мероприятие:</h3>
 			<div class="events"></div>
@@ -158,11 +154,33 @@
 			<div class="programm-of-event"></div>
 			<h3>Количество человек:</h3>
 			<div class="people-quantity"></div>
-			<h3>Дополнительные опции:</h3>
-			<div class="options"></div>
+			<!--<h3>Дополнительные опции:</h3>
+			<div class="options"></div>-->
 			<h3>Итого:</h3>
 			<div class="sum" ></div>
 		</div>
+	</section>
+	<section class="container slide-item" style="display: none;">
+		<h2 style="margin-top: 0.5em;">Количество участников</h2>
+		<div class="slide-container">
+			<h3>Выберите количество участников (детей) мероприятия от 12 до 32 человек</h3>
+			<!--<input class="slider" id="range" type="range" min="12" max="32" value="12">-->
+			<input id="valueRange" min="12" max="32"></input>
+			<h3>Введите примерную дату мероприятия</h3>
+			<input type="date" id="date-of-event" name="">
+			<button class="calculate" id="" type="button" >Рассчитать стоимость</button>
+		</div>
+		<div id="text-remark">
+			<p style="text-align: center;">Если Вам необходима специальная программа, то наши организаторы помогут ее составить</p>
+			<p style="text-align: center;">Телефон:<a href="tel:+79872252524"> +79872252524</a></p>
+			<p style="text-align: center; margin-bottom: 0;">E-mail: accelevent@yandex.ru</p>
+		</div>
+		<!--
+		<div class="date-event">
+			<h2>Примерная дата мероприятия</h2>
+			<input type="data" name="">
+		</div>
+		-->
 	</section>
 </form>
 
@@ -170,9 +188,9 @@
 	<div class="container form-wrap">
 		<button class="previous">Назад</button>
 		<button class="next">Вперед</button>
-		<button class="summing button">Расчитать</button>
-		<button class="send-button">Отправить</button>
-		<button class="download-button"><a href="" style="text-decoration: none; color: white;">Скачать</a></button>
+		<button class="download-button">Скачать</button>
+		<button id="send-button">Заказать точный расчет</button>
+
 	</div>
 </section>
 </div>
@@ -195,35 +213,39 @@
 	<div class="background-aboutUs"></div>
 	<div class="aboutUs-text container">
 		<h2>О нас</h2>
+		<p style="text-align: center; font-size: 1.5em;">Мастерская креативных мероприятий «Аксель» – профессиональное сообщество
+организаторов мероприятий, которые имеют большой опыт работы в детских и
+молодежных лагерях. Для нас организация праздника – это стиль жизни. Жизни,
+за которую мы успели сделать много яркого.</p>
 		<div class="aboutUs-achivements">
 			<div class="achivement">
 				<div class="achivement-circle">
-					<div class="achivement-number">300</div>
+					<div class="achivement-number">8</div>
 				</div>
-				<div class="achivement-text">Клиентов</div>
+				<div class="achivement-text">лет мы занимаемся организацией ярких событий</div>
 			</div>
 			<div class="achivement">
 				<div class="achivement-circle">
-					<div class="achivement-number">200</div>
+					<div class="achivement-number">16</div>
 				</div>
-				<div class="achivement-text">Довольных клиентов</div>
+				<div class="achivement-text">неординарных ведущих всегда готовы устроить крутой праздник</div>
 			</div>
 			<div class="achivement">
 				<div class="achivement-circle">
-					<div class="achivement-number">100</div>
+					<div class="achivement-number">>250</div>
 				</div>
-				<div class="achivement-text">Какой-то ерунды</div>
+				<div class="achivement-text">мероприятий получили наивысшую оценку детей и родителей</div>
 			</div>
 			<div class="achivement">
 				<div class="achivement-circle">
-					<div class="achivement-number">1917</div>
+					<div class="achivement-number">>4000</div>
 				</div>
-				<div class="achivement-text">МЫЕСТЬЦАРЬ</div>
+				<div class="achivement-text">детей стали счастливыми участниками наших программ</div>
 			</div>
 		</div>
 	</div>
 </section>
-</body>
+
 <footer>
 	<div class="background-footer"></div>
 	<section class="container footer">
@@ -250,6 +272,19 @@
 	</section>
 	<div class="copyright container">© copyright 2021</div>
 </footer>
+<div class="modal" style="display: none;">
+	<div class="modal-window">
+		<button class="mob-menu-icon-close" id="closeModal"></button>
+		<div class="modal-window-text">
+			<span style="width: 70%; text-align: center;">Укажите ваши контактные данные</span>
+			<input class="modal-input" id="Name" type="text" placeholder="Как к вам обращаться?">
+			<input class="modal-input" id="Email" type="text" placeholder="Ваша почта">
+			<input class="modal-input" id="phoneNumber" type="text" placeholder="Ваш контактный телефон">
+			<button id="send-button-modal">Отправить</button>
+		</div>
+	</div>
+</div>
+</body>
 <script type="text/javascript" src="Scripts/pdfmake.min.js"></script>
 	<script type="text/javascript" src="Scripts/vfs_fonts.js"></script>
 	<script type="text/javascript" src="Scripts/script.js"></script>
