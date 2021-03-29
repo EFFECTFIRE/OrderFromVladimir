@@ -384,6 +384,7 @@ section{
 }
 .slide-item{
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
@@ -517,10 +518,17 @@ section{
 
 .slide-container{
 	display: flex;
-	justify-content: center;
-	flex-direction: column;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 	align-items: center;
 	margin: 0em 3em;
+}
+.slide-container h3{
+	margin-right: 0.5em;
+}
+.slide-container-item{
+	display: flex;
+	align-items: center;
 }
 .slider{
 	width: 100%;
@@ -579,7 +587,6 @@ section{
 	margin:0.5em auto;
 	text-align: left;
 	border-bottom: 0.1em solid #ff7f00; 
-  }
 }
 .social{
 	display: flex;
@@ -614,21 +621,19 @@ section{
 	.slide-container{width: 70%}
 }
 #valueRange{
-	background-color: transparent;
     font-family: "Roboto";
     font-size: larger;
     border-radius: 5px;
     border: 5px solid #46a54b;
-    color: white;
     width: 5%;
+	height:3%;
 }
 #date-of-event{
-	background-color: transparent;
     font-family: "Roboto";
     font-size: larger;
     border-radius: 5px;
     border: 5px solid #46a54b;
-    color: white;
+	height:3%;
 }
 .data-event{
 	display: flex;
@@ -675,7 +680,7 @@ section{
 .modal-window{
 	display: flex;
 	flex-direction: column;
-	width: 30%;
+	width: 40%;
 	height: 600px;
 	border: 0.2em solid #46a54b;
 	border-radius: 5px;

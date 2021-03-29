@@ -149,7 +149,7 @@
 		</div>
 	</section>-->
 	<section class="container slide-total" style="display: none;">
-		<h2 style="margin-top: 30px;">Итого</h2>
+		<h2 style="margin-top: 30px;">Результаты рассчета</h2>
 		<div class="results">
 			<h3>Мероприятие:</h3>
 			<div class="events"></div>
@@ -163,16 +163,24 @@
 			<div class="sum" ></div>
 		</div>
 	</section>
-	<section class="container slide-item" style="display: none;">
-		<h2 style="margin-top: 0.5em;">Количество участников</h2>
+	<section class="container slide-item" style="display: none; justify-content:space-around;">
+		<h2 style="margin-top: 1.8em; margin-bottom:0.4em;">Количество участников</h2>
 		<div class="slide-container">
-			<h3>Выберите количество участников (детей) мероприятия от 12 до 32 человек</h3>
-			<!--<input class="slider" id="range" type="range" min="12" max="32" value="12">-->
-			<input id="valueRange" min="12" max="32"></input>
-			<h3>Введите примерную дату мероприятия</h3>
-			<input type="date" id="date-of-event" name="date-of-event">
-			<button class="calculate" id="" type="button" >Рассчитать стоимость</button>
+			<div class="slide-container-item">
+				<h3>Выберите количество участников (детей) мероприятия от 12 до 32 человек:</h3>
+				<!--<input class="slider" id="range" type="range" min="12" max="32" value="12">-->
+				<input id="valueRange" min="12" max="32"></input>
+			</div>
+			<div class="slide-container-item">
+				<h3>Введите примерную дату мероприятия</h3>
+				<input type="date" id="date-of-event" name="date-of-event">
+			</div>
+			<div class="slide-container-item" style="justify-content: center; width: 100%; margin: 0.6em 0;">
+				<button class="calculate" id="" type="button" >Рассчитать стоимость</button>
+			</div>
+			
 		</div>
+		
 		<div id="text-remark">
 			<p style="text-align: center;">Если Вам необходима специальная программа, то наши организаторы помогут ее составить</p>
 			<p style="text-align: center;">Телефон:<a href="tel:+79872252524"> +7(987)225-25-24</a></p>
