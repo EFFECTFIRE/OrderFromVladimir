@@ -103,7 +103,8 @@ document.querySelector(".download-button").onclick = function(){
 				margin: [ 0, 5, 0, 5 ]
 			},
 			{
-				text: '4 ЧАСА, ДНЕВНАЯ ПРОГРАММА',
+				text: '4 ЧАСА ДНЕВНАЯ ПРОГРАММА',
+				alignment:'center',
 				style: 'subheader',
 				margin: [ 0, 5, 0, 5 ]
 			},
@@ -259,7 +260,7 @@ document.querySelector(".download-button").onclick = function(){
 				margin: [ 0, 5, 0, 5 ]
 			},
 			{
-				text: '4 ЧАСА, ВЕЧЕРНЯЯ ПРОГРАММА',
+				text: "4 ЧАСА ВЕЧЕРЕНЯЯ ПРОГРАММА",
 				style: 'subheader',
 				margin: [ 0, 5, 0, 5 ]
 			},
@@ -415,7 +416,7 @@ document.querySelector(".download-button").onclick = function(){
 				margin: [ 0, 5, 0, 5 ]
 			},
 			{
-				text: '4 ЧАСА, ВЕЧЕРНЯЯ ПРОГРАММА',
+				text: '5 ЧАСОВ ДНЕВНАЯ ПРОГРАММА',
 				style: 'subheader',
 				margin: [ 0, 5, 0, 5 ]
 			},
