@@ -295,6 +295,7 @@
 				<input class="modal-input" id="Email" type="text" placeholder="Ваша почта">
 				<input class="modal-input" id="phoneNumber" type="text" placeholder="Ваш контактный телефон">
 				<input class="modal-input" id="Comments" type="text" style="height: 100px;" placeholder="Коментарии к заявке">
+				<div style="display: none;">Program.pdf</div>
 				<button id="send-button-modal" type="submit">Отправить</button>
 			</form>
 		</div>
@@ -304,7 +305,6 @@
 <script type="text/javascript" src="Scripts/pdfmake.min.js"></script>
 	<script type="text/javascript" src="Scripts/vfs_fonts.js"></script>
 	<script type="text/javascript" src="Scripts/script.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADkqTpkzSNQcOx69X_aeKHtOgfDctKUXc&callback=initMap" async></script>
 	<script>
 	$(document).ready(function() {
 		$(".results").load("/mail.php");

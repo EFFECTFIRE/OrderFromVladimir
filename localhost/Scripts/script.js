@@ -91,7 +91,32 @@ document.querySelector(".previous").onclick = function(){
 
 
 
-document.querySelector(".download-button").onclick = function(){
+document.querySelector(".calculate").onclick = function(){
+	if (valueRange.value == 0 && typesOfCB[slideIndex]=="People" || valueRange.value > 32 || valueRange.value < 12 )
+	{
+		return alert('Введите количество человек из указанного диапазона');
+	}
+	addNumberOfPeople();
+	totalSlide.style.display = "flex";
+	lastSlide.style.display = "none";
+	countPrice();
+	var programs = document.querySelector('.programm > input:checked');
+	var programTotal = document.querySelector('.programm-of-event');
+	var events = document.querySelector('.event > input:checked');
+	var eventTotal = document.querySelector('.events');
+	var peopleQuantity = document.querySelector('.people-quantity');
+	//var options = document.querySelectorAll(".option > input:checked");
+	//var optionsTotal = document.querySelector(".options");
+	var sumTotal = document.querySelector(".sum");
+	sumTotal.innerHTML= Math.round(price/numberOfPeople) + " рублей на человека";
+	programTotal.innerHTML = programs.getAttribute('data-programm');
+	eventTotal.innerHTML = events.getAttribute('data-event');
+	peopleQuantity.innerHTML = valueRange.value + " человек";
+	document.querySelector(".download-button").style.display = "flex";
+	document.querySelector("#send-button").style.display = "flex";
+	//for (var i = 0; i < options.length; i++) {
+	//	optionsTotal.innerHTML += options[i].getAttribute('data-option') + "<br>";
+	//}
 	var dateControl = document.querySelector('input[type="date"]');
 	countPrice();
 	var docInfo1 = {
@@ -742,7 +767,23 @@ document.querySelector(".download-button").onclick = function(){
 
 	}
 	let docs = [docInfo1,docInfo2,docInfo3,docInfo4];
-	pdfMake.createPdf(docs[typeOfProgram]).download('Программа.pdf');
+	var pdfDoc = pdfMake.createPdf(docs[typeOfProgram]);
+	const request = new XMLHttpRequest();
+	/*
+	
+	
+	ВСТАВЬ вместо url URL файла к которому идет запрос.
+	
+	
+	*/
+	request.open("POST",/*сюда*/);
+	request.setRequestHeader('Content-type', 'application/base64');
+	request.send(pdfDoc.getBase64((data)=>{
+		alert(data);
+	}));
+	request.addEventListener('load', (event)=>{
+		console.log(event);
+	})
 }
 
 var mobileMenuIcon = document.querySelector(".mob-menu-icon");
@@ -757,33 +798,7 @@ mobileMenuCloseIcon.onclick = function(){
 var calcButton = document.querySelector(".calculate");
 var summing = document.querySelector(".summing");
 var valueRange = document.querySelector("#valueRange");
-calcButton.onclick = function(){
-	if (valueRange.value == 0 && typesOfCB[slideIndex]=="People" || valueRange.value > 32 || valueRange.value < 12 )
-	{
-		return alert('Введите количество человек из указанного диапазона');
-	}
-	addNumberOfPeople();
-	totalSlide.style.display = "flex";
-	lastSlide.style.display = "none";
-	countPrice();
-	var programs = document.querySelector('.programm > input:checked');
-	var programTotal = document.querySelector('.programm-of-event');
-	var events = document.querySelector('.event > input:checked');
-	var eventTotal = document.querySelector('.events');
-	var peopleQuantity = document.querySelector('.people-quantity');
-	//var options = document.querySelectorAll(".option > input:checked");
-	//var optionsTotal = document.querySelector(".options");
-	var sumTotal = document.querySelector(".sum");
-	sumTotal.innerHTML= Math.round(price/numberOfPeople) + " рублей на человека";
-	programTotal.innerHTML = programs.getAttribute('data-programm');
-	eventTotal.innerHTML = events.getAttribute('data-event');
-	peopleQuantity.innerHTML = valueRange.value + " человек";
-	document.querySelector(".download-button").style.display = "flex";
-	document.querySelector("#send-button").style.display = "flex";
-	//for (var i = 0; i < options.length; i++) {
-	//	optionsTotal.innerHTML += options[i].getAttribute('data-option') + "<br>";
-	//}
-}
+
 var sendButton = document.querySelector("#send-button");
 sendButton.onclick = function(){
 	modal.style.display = "flex";
