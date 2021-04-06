@@ -118,7 +118,6 @@ document.querySelector(".calculate").onclick = function(){
 	//	optionsTotal.innerHTML += options[i].getAttribute('data-option') + "<br>";
 	//}
 	var dateControl = document.querySelector('input[type="date"]');
-	countPrice();
 	var docInfo1 = {
 		content: [
 			{
@@ -768,22 +767,570 @@ document.querySelector(".calculate").onclick = function(){
 	}
 	let docs = [docInfo1,docInfo2,docInfo3,docInfo4];
 	var pdfDoc = pdfMake.createPdf(docs[typeOfProgram]);
-	const request = new XMLHttpRequest();
-	/*
-	
-	
-	ВСТАВЬ вместо url URL файла к которому идет запрос.
-	
-	
-	*/
-	request.open("POST",/*сюда*/);
-	request.setRequestHeader('Content-type', 'application/base64');
-	request.send(pdfDoc.getBase64((data)=>{
-		alert(data);
-	}));
-	request.addEventListener('load', (event)=>{
-		console.log(event);
-	})
+	var promiseObj = pdfDoc.getBase64((data) => {});
+	promiseObj.then(function(result){
+		document.querySelector('#pdfContainer').value = result;
+	});
+}
+
+document.querySelector(".download-button").onclick = function(){
+	var docInfo1 = {
+		content: [
+			{
+				text: 'ПРОГРАММА МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				text: '4 ЧАСА ДНЕВНАЯ ПРОГРАММА',
+				alignment:'center',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'Время',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'},{text: 'Основные события',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'}],
+					[{text: "11:00",alignment:'center'},{text: "Организованный выезд.\nУчастников (детей и взрослых в количестве до 42 человек) забирает автобус с места сбора. Лучше всего подходит площадка недалеко от школы, которая известна каждому участнику"}],
+					[{text: "12:00",alignment:'center'},{text: "Тематическая встреча. Начало программы\nВедущие программы в образах забирают детей, и все время мероприятия находятся с ними. Начинается все с места, где дети оставляют свои сумки и ненужные вещи"}],
+					[{text: "12:10",alignment:'center'},{text:"Праздничный обед. Старт квеста\nПроходит в обеденном зале или специальном шатре. Здесь ведущие погружают участников в квестовую часть и дают старт испытаниям"}],
+					[{text: "12:30-14:30",alignment:'center'},{text: "Мастер-класс по росписи блинов. Чайный стол\nДети вместе с наставниками участвуют в испытаниях, подготовленных создателями интерактивной зоны «Квест-парк». По итогам участники получают ключи от наград, которые их ждут в конце программы"}],
+					[{text: "14:30",alignment:'center'},{text: "Мастер-класс по росписи блинов. Чайный стол\nУчастникам предоставляется возможность перевести дух и немного отдохнуть. В это время они практикуются в рисовании топпингом или джемами на блинах"}],
+					[{text: "15:00",alignment:'center'},{text: "Интерактивная программа с дискотекой\nТеперь, когда все испытания позади, самое время зажечь на праздничной дискотеке в вместе с ведущими и интерактивной программой. Бонусом станет еще один совместный флэшмоб в копилке у детей"}],
+					[{text: "15:35",alignment:'center'},{text: "Подведение итогов. Благодарности. Награждение\nСамое время поблагодарить учителей, воспитателей, родителей за те замечательные годы, которые были проведены вместе. А после каждый ребенок получает сувенир на память. Общее фото"}],
+					[{text: "15:50",alignment:'center'},{text: "Сборы\nГлавное ничего не забыть. Есть возможность все проверить и уставшими, но счастливыми отправиться в комфортный автобус"}],
+					[{text: "16:00",alignment:'center'},{text: "Организованный отъезд\nАвтобус привезет участников к месту выезда. А заботливый водитель проследит, чтобы ничего не осталось на сидениях и под ними"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'МЕНЮ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				text: 'ПРАЗДНИЧНЫЙ ОБЕД',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'БЛЮДО',bold:true,fillColor:'#f79646',color:"white",alignment:'center'},{text: 'ОПИСАНИЕ',bold:true,fillColor:'#f79646',color:"white",alignment:'center'}],
+					[{text: "Салат порционный, один на выбор",alignment:'center',rowSpan: 2,},{text: "Салат «Столичный»\nкуриное филе, огурцы свежие, огурцы консервированные, морковь, картофель, яйца, горошек консервированный, майонез, зелень"}],
+					['',{text: "Салат с курицей, помидорами и сыром\nкуриное филе, помидоры свежие, яйца, сыр, майонез, приправы"}],
+					[{text: "Мясная тарелка",alignment:'center'},{text:"Мясо подается на тарелке, украшенной зеленью, и включает: куриную грудку, говядину и ветчину"}],
+					[{text: "Овощная тарелка",alignment:'center'},{text: "Овощи подаются на тарелке, украшенной зеленью, и включают: помидоры свежие, огурцы свежие, перец свежий сладкий"}],
+					[{text: "Фруктовая тарелка",alignment:'center'},{text: "Фрукты подаются на тарелке в нарезанном виде и включают: яблоко, киви, банан, груша, апельсин (возможна замена)"}],
+					[{text: "Горячее блюдо порционное, одно на выбор",alignment:'center'},{text: "Куриная грудка под соусом\nКуринные котлеты с зеленью Запеченные куриные ножки с зеленью"}],
+					[{text: "Гарнир порционный один на выбор",alignment:'center'},{text: "Запеченный картофель\nКартофель фри\nРис отварной с овощами"}],
+					[{text: "Хлебная корзинка",alignment:'center'},{text: "Хлеб пшеничный\nХлеб нарезной\nХлебцы"}],
+					[{text: "Напитки",alignment:'center'},{text: "Фруктовые соки или морсы\nМинеральная вода"}],
+					[{text: "Чайный стол",alignment:'center'},{text: "Чай черный\nЧай черный\nПеченье и вафли"}],
+					[{text: "«Блинный» мастер-класс",alignment:'center'},{text: "Блинчики по 3 штуки на человека\nТоппинги или джемы"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'СТОИМОСТЬ ВКЛЮЧАЕТ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Групповой трансфер до базы и обратно",alignment:'center'},{text: "До 42 человек",alignment:'center'}],
+					[{text: "Ведущие программы",alignment:'center'},{text: "2 человека",alignment:'center'}],
+					[{text: "Дополнительные инструктора и помощники",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ПРЕДЛОЖЕНИЕ ДЛЯ РОДИТЕЛЕЙ И СОПРОВОЖДАЮЩИХ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Шатер на время мероприятия",alignment:'center'},{text: "3000 рублей",alignment:'center'}],
+					[{text: "Мангал на время мероприятия",alignment:'center'},{text: "1500 рублей",alignment:'center'}],
+					[{text: "Организационный сбор",alignment:'center'},{text: "250 рублей с человека. При заказе праздничного меню организационный сбор не берется",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "1000 рублей на человека",alignment:'center'}]
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ДОПОЛНИТЕЛЬНО МОЖЕМ ПРЕДОСТАВИТЬ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Фотооператор (фотоотчет от 150 фотографий)",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Видеооператор (видеоролик 5-7 минут)",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Аниматоры",alignment:'center'},{text: "2 тысячи рублей за час",alignment:'center'}],
+					[{text: "Ведущий для программы родителям",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Диджей для программы родителям",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Индивидуальная фотозона на заказ",alignment:'center'},{text: "От 5 тысяч рублей",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 0 ]
+					}
+			}
+		]
+
+	}
+	//Второй док
+	var docInfo2 = {
+		content: [
+			{
+				text: 'ПРОГРАММА МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				text: "4 ЧАСА ВЕЧЕРЕНЯЯ ПРОГРАММА",
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'Время',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'},{text: 'Основные события',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'}],
+					[{text: "16:00",alignment:'center'},{text: "Организованный выезд.\nУчастников (детей и взрослых в количестве до 42 человек) забирает автобус с места сбора. Лучше всего подходит площадка недалеко от школы, которая известна каждому участнику"}],
+					[{text: "17:00",alignment:'center'},{text: "Тематическая встреча. Начало программы\nВедущие программы в образах забирают детей, и все время мероприятия находятся с ними. Начинается все с места, где дети оставляют свои сумки и ненужные вещи"}],
+					[{text: "17:15-18:45",alignment:'center'},{text:"Прохождение «Квест-парка»\nДети вместе с наставниками участвуют в испытаниях, подготовленных создателями интерактивной зоны «Квест-парк». По итогам участники получают ключи от наград, которые их ждут в конце программы"}],
+					[{text: "19:00",alignment:'center'},{text: "Праздничный ужин\nПроходит в обеденном зале или специальном шатре. Здесь ведущие погружают участников в квестовую часть и дают старт испытаниям"}],
+					[{text: "19:15",alignment:'center'},{text: "Интерактивная программа с дискотекой\nТеперь, когда все испытания позади, самое время зажечь на праздничной дискотеке в вместе с ведущими и интерактивной программой. Бонусом станет еще один совместный флэшмоб в копилке у детей"}],
+					[{text: "20:15",alignment:'center'},{text: "Мастер-класс по росписи блинов. Чайный стол\nУчастникам предоставляется возможность перевести дух и немного отдохнуть. В это время они практикуются в рисовании топпингом или джемами на блинах"}],
+					[{text: "20:35",alignment:'center'},{text: "Подведение итогов. Благодарности. Награждение\nСамое время поблагодарить учителей, воспитателей, родителей за те замечательные годы, которые были проведены вместе. А после каждый ребенок получает сувенир на память. Общее фото"}],
+					[{text: "20:50",alignment:'center'},{text: "Сборы\nГлавное ничего не забыть. Есть возможность все проверить и уставшими, но счастливыми отправиться в комфортный автобус"}],
+					[{text: "21:00",alignment:'center'},{text: "Организованный отъезд\nАвтобус привезет участников к месту выезда. А заботливый водитель проследит, чтобы ничего не осталось на сидениях и под ними"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'МЕНЮ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				text: 'ПРАЗДНИЧНЫЙ ОБЕД',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'БЛЮДО',bold:true,fillColor:'#f79646',color:"white",alignment:'center'},{text: 'ОПИСАНИЕ',bold:true,fillColor:'#f79646',color:"white",alignment:'center'}],
+					[{text: "Салат порционный, один на выбор",alignment:'center',rowSpan: 2,},{text: "Салат «Столичный»\nкуриное филе, огурцы свежие, огурцы консервированные, морковь, картофель, яйца, горошек консервированный, майонез, зелень"}],
+					['',{text: "Салат с курицей, помидорами и сыром\nкуриное филе, помидоры свежие, яйца, сыр, майонез, приправы"}],
+					[{text: "Мясная тарелка",alignment:'center'},{text:"Мясо подается на тарелке, украшенной зеленью, и включает: куриную грудку, говядину и ветчину"}],
+					[{text: "Овощная тарелка",alignment:'center'},{text: "Овощи подаются на тарелке, украшенной зеленью, и включают: помидоры свежие, огурцы свежие, перец свежий сладкий"}],
+					[{text: "Фруктовая тарелка",alignment:'center'},{text: "Фрукты подаются на тарелке в нарезанном виде и включают: яблоко, киви, банан, груша, апельсин (возможна замена)"}],
+					[{text: "Горячее блюдо порционное, одно на выбор",alignment:'center'},{text: "Куриная грудка под соусом\nКуринные котлеты с зеленью Запеченные куриные ножки с зеленью"}],
+					[{text: "Гарнир порционный один на выбор",alignment:'center'},{text: "Запеченный картофель\nКартофель фри\nРис отварной с овощами"}],
+					[{text: "Хлебная корзинка",alignment:'center'},{text: "Хлеб пшеничный\nХлеб нарезной\nХлебцы"}],
+					[{text: "Напитки",alignment:'center'},{text: "Фруктовые соки или морсы\nМинеральная вода"}],
+					[{text: "Чайный стол",alignment:'center'},{text: "Чай черный\nЧай черный\nПеченье и вафли"}],
+					[{text: "«Блинный» мастер-класс",alignment:'center'},{text: "Блинчики по 3 штуки на человека\nТоппинги или джемы"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'СТОИМОСТЬ ВКЛЮЧАЕТ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Групповой трансфер до базы и обратно",alignment:'center'},{text: "До 42 человек",alignment:'center'}],
+					[{text: "Ведущие программы",alignment:'center'},{text: "2 человека",alignment:'center'}],
+					[{text: "Дополнительные инструктора и помощники",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ПРЕДЛОЖЕНИЕ ДЛЯ РОДИТЕЛЕЙ И СОПРОВОЖДАЮЩИХ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Шатер на время мероприятия",alignment:'center'},{text: "3000 рублей",alignment:'center'}],
+					[{text: "Мангал на время мероприятия",alignment:'center'},{text: "1500 рублей",alignment:'center'}],
+					[{text: "Организационный сбор",alignment:'center'},{text: "250 рублей с человека. При заказе праздничного меню организационный сбор не берется",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "1000 рублей на человека",alignment:'center'}]
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ДОПОЛНИТЕЛЬНО МОЖЕМ ПРЕДОСТАВИТЬ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Фотооператор (фотоотчет от 150 фотографий)",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Видеооператор (видеоролик 5-7 минут)",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Аниматоры",alignment:'center'},{text: "2 тысячи рублей за час",alignment:'center'}],
+					[{text: "Ведущий для программы родителям",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Диджей для программы родителям",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Индивидуальная фотозона на заказ",alignment:'center'},{text: "От 5 тысяч рублей",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 0 ]
+					}
+			}
+		]
+
+	}
+	//док 3
+	var docInfo3 = {
+		content: [
+			{
+				text: 'ПРОГРАММА МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				text: '5 ЧАСОВ ДНЕВНАЯ ПРОГРАММА',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'Время',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'},{text: 'Основные события',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'}],
+					[{text: "11:00",alignment:'center'},{text: "Организованный выезд.\nУчастников (детей и взрослых в количестве до 42 человек) забирает автобус с места сбора. Лучше всего подходит площадка недалеко от школы, которая известна каждому участнику"}],
+					[{text: "12:00",alignment:'center'},{text: "Тематическая встреча. Начало программы\nВедущие программы в образах забирают детей, и все время мероприятия находятся с ними. Начинается все с места, где дети оставляют свои сумки и ненужные вещи"}],
+					[{text: "12:10",alignment:'center'},{text: "Праздничный обед. Старт квеста\nПроходит в обеденном зале или специальном шатре. Здесь ведущие погружают участников в квестовую часть и дают старт испытаниям"}],
+					[{text: "12:30-14:30",alignment:'center'},{text:"Прохождение «Квест-парка»\nДети вместе с наставниками участвуют в испытаниях, подготовленных создателями интерактивной зоны «Квест-парк». По итогам участники получают ключи от наград, которые их ждут в конце программы"}],
+					[{text: "14:30",alignment:'center'},{text: "Мастер-класс по росписи блинов. Чайный стол\nУчастникам предоставляется возможность перевести дух и немного отдохнуть. В это время они практикуются в рисовании топпингом или джемами на блинах"}],
+					[{text: "15:00",alignment:'center'},{text: "Интерактивная программа с дискотекой\nТеперь, когда все испытания позади, самое время зажечь на праздничной дискотеке в вместе с ведущими и интерактивной программой. Бонусом станет еще один совместный флэшмоб в копилке у детей"}],
+					[{text: "15:35",alignment:'center'},{text: "Подведение итогов. Благодарности. Награждение\nСамое время поблагодарить учителей, воспитателей, родителей за те замечательные годы, которые были проведены вместе. А после каждый ребенок получает сувенир на память. Общее фото"}],
+					[{text: "15:50",alignment:'center'},{text: "Сборы\nГлавное ничего не забыть. Есть возможность все проверить и уставшими, но счастливыми отправиться в комфортный автобус"}],
+					[{text: "16:00",alignment:'center'},{text: "Организованный отъезд\nАвтобус привезет участников к месту выезда. А заботливый водитель проследит, чтобы ничего не осталось на сидениях и под ними"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'МЕНЮ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				text: 'ПРАЗДНИЧНЫЙ ОБЕД',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'БЛЮДО',bold:true,fillColor:'#f79646',color:"white",alignment:'center'},{text: 'ОПИСАНИЕ',bold:true,fillColor:'#f79646',color:"white",alignment:'center'}],
+					[{text: "Салат порционный, один на выбор",alignment:'center',rowSpan: 2,},{text: "Салат «Столичный»\nкуриное филе, огурцы свежие, огурцы консервированные, морковь, картофель, яйца, горошек консервированный, майонез, зелень"}],
+					['',{text: "Салат с курицей, помидорами и сыром\nкуриное филе, помидоры свежие, яйца, сыр, майонез, приправы"}],
+					[{text: "Мясная тарелка",alignment:'center'},{text:"Мясо подается на тарелке, украшенной зеленью, и включает: куриную грудку, говядину и ветчину"}],
+					[{text: "Овощная тарелка",alignment:'center'},{text: "Овощи подаются на тарелке, украшенной зеленью, и включают: помидоры свежие, огурцы свежие, перец свежий сладкий"}],
+					[{text: "Фруктовая тарелка",alignment:'center'},{text: "Фрукты подаются на тарелке в нарезанном виде и включают: яблоко, киви, банан, груша, апельсин (возможна замена)"}],
+					[{text: "Горячее блюдо порционное, одно на выбор",alignment:'center'},{text: "Куриная грудка под соусом\nКуринные котлеты с зеленью Запеченные куриные ножки с зеленью"}],
+					[{text: "Гарнир порционный один на выбор",alignment:'center'},{text: "Запеченный картофель\nКартофель фри\nРис отварной с овощами"}],
+					[{text: "Хлебная корзинка",alignment:'center'},{text: "Хлеб пшеничный\nХлеб нарезной\nХлебцы"}],
+					[{text: "Напитки",alignment:'center'},{text: "Фруктовые соки или морсы\nМинеральная вода"}],
+					[{text: "Чайный стол",alignment:'center'},{text: "Чай черный\nЧай черный\nПеченье и вафли"}],
+					[{text: "«Блинный» мастер-класс",alignment:'center'},{text: "Блинчики по 3 штуки на человека\nТоппинги или джемы"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'СТОИМОСТЬ ВКЛЮЧАЕТ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Групповой трансфер до базы и обратно",alignment:'center'},{text: "До 42 человек",alignment:'center'}],
+					[{text: "Ведущие программы",alignment:'center'},{text: "2 человека",alignment:'center'}],
+					[{text: "Дополнительные инструктора и помощники",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ПРЕДЛОЖЕНИЕ ДЛЯ РОДИТЕЛЕЙ И СОПРОВОЖДАЮЩИХ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Шатер на время мероприятия",alignment:'center'},{text: "3000 рублей",alignment:'center'}],
+					[{text: "Мангал на время мероприятия",alignment:'center'},{text: "1500 рублей",alignment:'center'}],
+					[{text: "Организационный сбор",alignment:'center'},{text: "250 рублей с человека. При заказе праздничного меню организационный сбор не берется",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "1000 рублей на человека",alignment:'center'}]
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ДОПОЛНИТЕЛЬНО МОЖЕМ ПРЕДОСТАВИТЬ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Фотооператор (фотоотчет от 150 фотографий)",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Видеооператор (видеоролик 5-7 минут)",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Аниматоры",alignment:'center'},{text: "2 тысячи рублей за час",alignment:'center'}],
+					[{text: "Ведущий для программы родителям",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Диджей для программы родителям",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Индивидуальная фотозона на заказ",alignment:'center'},{text: "От 5 тысяч рублей",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 0 ]
+					}
+			}
+		]
+
+	}
+	// док 4
+	var docInfo4 = {
+		content: [
+			{
+				text: 'ПРОГРАММА МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				text: '18 ЧАСОВ, ПРОГРАММА С НОЧЕВОЙ',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				text: 'ДЕНЬ 1',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'Время',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'},{text: 'Основные события',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'}],
+					[{text: "16:00",alignment:'center'},{text: "Организованный выезд.\nУчастников (детей и взрослых в количестве до 42 человек) забирает автобус с места сбора. Лучше всего подходит площадка недалеко от школы, которая известна каждому участнику"}],
+					[{text: "17:00",alignment:'center'},{text: "Тематическая встреча. Начало программы\nВедущие программы в образах забирают детей, и все время мероприятия находятся с ними. Начинается все с места, где дети оставляют свои сумки и ненужные вещи"}],
+					[{text: "17:15-18:45",alignment:'center'},{text:"Прохождение «Квест-парка»\nДети вместе с наставниками участвуют в испытаниях, подготовленных создателями интерактивной зоны «Квест-парк». По итогам участники получают ключи от наград, которые их ждут в конце программы"}],
+					[{text: "19:00",alignment:'center'},{text: "Праздничный ужин\nПроходит в обеденном зале или специальном шатре. Здесь ведущие погружают участников в квестовую часть и дают старт испытаниям"}],
+					[{text: "19:15",alignment:'center'},{text: "Интерактивная программа с дискотекой\nТеперь, когда все испытания позади, самое время зажечь на праздничной дискотеке в вместе с ведущими и интерактивной программой. Бонусом станет еще один совместный флэшмоб в копилке у детей"}],
+					[{text: "20:15",alignment:'center'},{text: "Чайный стол с мастер-классом\nУчастникам предоставляется возможность перевести дух и немного отдохнуть. В это время они практикуются в рисовании топпингом или джемами на блинах"}],
+					[{text: "20:35",alignment:'center'},{text: "Подведение итогов. Благодарности. Награждение\nСамое время поблагодарить учителей, воспитателей, родителей за те замечательные годы, которые были проведены вместе. А после каждый ребенок получает сувенир на память. Общее фото"}],
+					[{text: "20:50",alignment:'center'},{text: "Сборы\nГлавное ничего не забыть. Есть возможность все проверить и уставшими, но счастливыми отправиться в комфортный автобус"}],
+					[{text: "21:00",alignment:'center'},{text: "Организованный отъезд\nАвтобус привезет участников к месту выезда. А заботливый водитель проследит, чтобы ничего не осталось на сидениях и под ними"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ДЕНЬ 2',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				table:{
+					body:[
+					[{text: 'Время',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'},{text: 'Основные события',bold:true,fillColor:'#4f81bd',color:"white",alignment:'center'}],
+					[{text: "16:00",alignment:'center'},{text: "Организованный выезд.\nУчастников (детей и взрослых в количестве до 42 человек) забирает автобус с места сбора. Лучше всего подходит площадка недалеко от школы, которая известна каждому участнику"}],
+					[{text: "17:00",alignment:'center'},{text: "Тематическая встреча. Начало программы\nВедущие программы в образах забирают детей, и все время мероприятия находятся с ними. Начинается все с места, где дети оставляют свои сумки и ненужные вещи"}],
+					[{text: "17:15-18:45",alignment:'center'},{text:"Прохождение «Квест-парка»\nДети вместе с наставниками участвуют в испытаниях, подготовленных создателями интерактивной зоны «Квест-парк». По итогам участники получают ключи от наград, которые их ждут в конце программы"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'МЕНЮ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				text: 'ПРАЗДНИЧНЫЙ ОБЕД',
+				style: 'subheader',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					body:[
+					[{text: 'БЛЮДО',bold:true,fillColor:'#f79646',color:"white",alignment:'center'},{text: 'ОПИСАНИЕ',bold:true,fillColor:'#f79646',color:"white",alignment:'center'}],
+					[{text: "Салат порционный, один на выбор",alignment:'center',rowSpan: 2,},{text: "Салат «Столичный»\nкуриное филе, огурцы свежие, огурцы консервированные, морковь, картофель, яйца, горошек консервированный, майонез, зелень"}],
+					['',{text: "Салат с курицей, помидорами и сыром\nкуриное филе, помидоры свежие, яйца, сыр, майонез, приправы"}],
+					[{text: "Мясная тарелка",alignment:'center'},{text:"Мясо подается на тарелке, украшенной зеленью, и включает: куриную грудку, говядину и ветчину"}],
+					[{text: "Овощная тарелка",alignment:'center'},{text: "Овощи подаются на тарелке, украшенной зеленью, и включают: помидоры свежие, огурцы свежие, перец свежий сладкий"}],
+					[{text: "Фруктовая тарелка",alignment:'center'},{text: "Фрукты подаются на тарелке в нарезанном виде и включают: яблоко, киви, банан, груша, апельсин (возможна замена)"}],
+					[{text: "Горячее блюдо порционное, одно на выбор",alignment:'center'},{text: "Куриная грудка под соусом\nКуринные котлеты с зеленью Запеченные куриные ножки с зеленью"}],
+					[{text: "Гарнир порционный один на выбор",alignment:'center'},{text: "Запеченный картофель\nКартофель фри\nРис отварной с овощами"}],
+					[{text: "Хлебная корзинка",alignment:'center'},{text: "Хлеб пшеничный\nХлеб нарезной\nХлебцы"}],
+					[{text: "Напитки",alignment:'center'},{text: "Фруктовые соки или морсы\nМинеральная вода"}],
+					[{text: "Чайный стол",alignment:'center'},{text: "Чай черный\nЧай черный\nПеченье и вафли"}],
+					[{text: "«Блинный» мастер-класс",alignment:'center'},{text: "Блинчики по 3 штуки на человека\nТоппинги или джемы"}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'СТОИМОСТЬ ВКЛЮЧАЕТ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Групповой трансфер до базы и обратно",alignment:'center'},{text: "До 42 человек",alignment:'center'}],
+					[{text: "Ведущие программы",alignment:'center'},{text: "2 человека",alignment:'center'}],
+					[{text: "Дополнительные инструктора и помощники",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
+					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
+					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ПРЕДЛОЖЕНИЕ ДЛЯ РОДИТЕЛЕЙ И СОПРОВОЖДАЮЩИХ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Шатер на время мероприятия",alignment:'center'},{text: "3000 рублей",alignment:'center'}],
+					[{text: "Мангал на время мероприятия",alignment:'center'},{text: "1500 рублей",alignment:'center'}],
+					[{text: "Организационный сбор",alignment:'center'},{text: "250 рублей с человека. При заказе праздничного меню организационный сбор не берется",alignment:'center'}],
+					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "1000 рублей на человека",alignment:'center'}]
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ДОПОЛНИТЕЛЬНО МОЖЕМ ПРЕДОСТАВИТЬ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ]
+			},
+			{
+
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'СТОИМОСТЬ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Фотооператор (фотоотчет от 150 фотографий)",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Видеооператор (видеоролик 5-7 минут)",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Аниматоры",alignment:'center'},{text: "2 тысячи рублей за час",alignment:'center'}],
+					[{text: "Ведущий для программы родителям",alignment:'center'},{text: "15 тысяч рублей",alignment:'center'}],
+					[{text: "Диджей для программы родителям",alignment:'center'},{text: "5 тысяч рублей",alignment:'center'}],
+					[{text: "Индивидуальная фотозона на заказ",alignment:'center'},{text: "От 5 тысяч рублей",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 0 ]
+					}
+			}
+		]
+
+	}
+	var docs = [docInfo1,docInfo2,docInfo3,docInfo4];
+	pdfMake.createPdf(docs[typeOfProgram]).download('Program.pdf');
 }
 
 var mobileMenuIcon = document.querySelector(".mob-menu-icon");

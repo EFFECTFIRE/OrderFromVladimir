@@ -291,12 +291,12 @@
 		<div class="modal-window-text">
 			<span style="width: 70%; text-align: center;">Укажите ваши контактные данные</span>
 			<form action="mail.php" method="POST" style="display: flex; flex-direction: column; justify-content:center;">
-				<input class="modal-input" id="Name" type="text" placeholder="Как к вам обращаться?">
-				<input class="modal-input" id="Email" type="text" placeholder="Ваша почта">
+				<input class="modal-input" id="Name" type="text" placeholder="Как к вам обращаться?" required>
+				<input class="modal-input" id="Email" type="text" placeholder="Ваша почта" required>
 				<input class="modal-input" id="phoneNumber" type="text" placeholder="Ваш контактный телефон">
 				<input class="modal-input" id="Comments" type="text" style="height: 100px;" placeholder="Коментарии к заявке">
-				<div style="display: none;">Program.pdf</div>
-				<button id="send-button-modal" type="submit">Отправить</button>
+				<input style="display: none;" id="pdfContainer">
+				<button id="send-button-modal">Отправить</button>
 			</form>
 		</div>
 	</div>
