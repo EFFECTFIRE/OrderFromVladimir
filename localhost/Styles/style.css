@@ -523,17 +523,25 @@ section{
 
 .slide-container{
 	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	justify-content: space-between;
 	align-items: center;
-	margin: 0em 3em;
+	margin: 1.5em 3em 1em 3em;
+	flex-wrap: wrap;
 }
 .slide-container h3{
-	margin-right: 0.5em;
+	margin: 0;
 }
 .slide-container-item{
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: rgba(0,0,0,0.3);
+	border-radius: 5%;
+	padding: 20px 50px;
+	margin: 0 auto;
+	max-width: 30%;
+	height: 215px;
+	
 }
 .slider{
 	width: 100%;
@@ -624,20 +632,14 @@ section{
 	.mob-menu-icon{display:flex;}
 	.slide-container{width: 70%}
 }
-#valueRange{
+#valueRange, #date-of-event{
     font-family: "Roboto";
     font-size: larger;
-    border-radius: 5px;
-    border: 5px solid #46a54b;
-    width: 5%;
-	height:3%;
-}
-#date-of-event{
-    font-family: "Roboto";
-    font-size: larger;
-    border-radius: 5px;
-    border: 5px solid #46a54b;
-	height:3%;
+    border-radius: 50px;
+    border: none;
+	color: rgba(255, 127, 0, 1);
+	text-align: center;
+	padding: 5px;
 }
 .data-event{
 	display: flex;
@@ -725,13 +727,12 @@ section{
 	color: white;
 }
 .calculate{
-	padding: 0 0.5em;
+	padding: 0 1em;
 	margin: 0.5em;
 	height: 2em;
-	border-radius: 5px;
-	border: 0.1em solid #46a54b;
+	border-radius: 50px;
+	border: none;
 	background-color:#ff7f00;
-	box-shadow: inset 0 0 5px white;
 	color:white;
 	font-size: 1.5em;
 
