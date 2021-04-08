@@ -92,10 +92,16 @@ document.querySelector(".previous").onclick = function(){
 
 
 document.querySelector(".calculate").onclick = function(){
+	var dateControl = document.querySelector('input[type="date"]');
 	if (valueRange.value == 0 && typesOfCB[slideIndex]=="People" || valueRange.value > 32 || valueRange.value < 12 )
 	{
 		return alert('Введите количество человек из указанного диапазона');
 	}
+	if (dateControl.value == 0 && typesOfCB[slideIndex]=="People" || dateControl.value < '2021-04-08'){
+		return alert('Введите корректную дату');
+	}
+		
+	
 	addNumberOfPeople();
 	totalSlide.style.display = "flex";
 	lastSlide.style.display = "none";
@@ -117,7 +123,6 @@ document.querySelector(".calculate").onclick = function(){
 	//for (var i = 0; i < options.length; i++) {
 	//	optionsTotal.innerHTML += options[i].getAttribute('data-option') + "<br>";
 	//}
-	var dateControl = document.querySelector('input[type="date"]');
 	var docInfo1 = {
 		content: [
 			{
@@ -774,6 +779,7 @@ document.querySelector(".calculate").onclick = function(){
 }
 
 document.querySelector(".download-button").onclick = function(){
+	var dateControl = document.querySelector('input[type="date"]');
 	var docInfo1 = {
 		content: [
 			{
@@ -856,6 +862,29 @@ document.querySelector(".download-button").onclick = function(){
 					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
 					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
 					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ОПИСАНИЕ И СТОИМОСТЬ МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Тип мероприятия",alignment:'center'},{text: ourEvents[typeOfEvent],alignment:'center'}],
+					[{text: "Дата проведения",alignment:'center'},{text: dateControl.value,alignment:'center'}],
+					[{text: "Количество участников",alignment:'center'},{text: numberOfPeople+" детей",alignment:'center'}],
+					[{text: "Вид программы",alignment:'center'},{text: ourProgram[typeOfProgram],alignment:'center'}],
+					[{text: "Стоимость полная",alignment:'center'},{text: price+" рублей",alignment:'center'}],
+					[{text: "Стоимость на человека",alignment:'center'},{text: Math.round(price/numberOfPeople)+" рублей",alignment:'center'}],
 					],
 					headerRows:1,
 					margin:[ 0, 5, 0, 5 ]
@@ -995,6 +1024,29 @@ document.querySelector(".download-button").onclick = function(){
 					}
 			},
 			{
+				text: 'ОПИСАНИЕ И СТОИМОСТЬ МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Тип мероприятия",alignment:'center'},{text: ourEvents[typeOfEvent],alignment:'center'}],
+					[{text: "Дата проведения",alignment:'center'},{text: dateControl.value,alignment:'center'}],
+					[{text: "Количество участников",alignment:'center'},{text: numberOfPeople+" детей",alignment:'center'}],
+					[{text: "Вид программы",alignment:'center'},{text: ourProgram[typeOfProgram],alignment:'center'}],
+					[{text: "Стоимость полная",alignment:'center'},{text: price+" рублей",alignment:'center'}],
+					[{text: "Стоимость на человека",alignment:'center'},{text: Math.round(price/numberOfPeople)+" рублей",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
 				text: 'ПРЕДЛОЖЕНИЕ ДЛЯ РОДИТЕЛЕЙ И СОПРОВОЖДАЮЩИХ',
 				style: 'header',
 				alignment: 'center',
@@ -1122,6 +1174,29 @@ document.querySelector(".download-button").onclick = function(){
 					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
 					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
 					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ОПИСАНИЕ И СТОИМОСТЬ МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Тип мероприятия",alignment:'center'},{text: ourEvents[typeOfEvent],alignment:'center'}],
+					[{text: "Дата проведения",alignment:'center'},{text: dateControl.value,alignment:'center'}],
+					[{text: "Количество участников",alignment:'center'},{text: numberOfPeople+" детей",alignment:'center'}],
+					[{text: "Вид программы",alignment:'center'},{text: ourProgram[typeOfProgram],alignment:'center'}],
+					[{text: "Стоимость полная",alignment:'center'},{text: price+" рублей",alignment:'center'}],
+					[{text: "Стоимость на человека",alignment:'center'},{text: Math.round(price/numberOfPeople)+" рублей",alignment:'center'}],
 					],
 					headerRows:1,
 					margin:[ 0, 5, 0, 5 ]
@@ -1278,6 +1353,29 @@ document.querySelector(".download-button").onclick = function(){
 					[{text: "Праздничный обед по выбранному меню",alignment:'center'},{text: "Утверждается заранее",alignment:'center'}],
 					[{text: "Программа по прохождению «Квест-парка»",alignment:'center'},{text: "По программе",alignment:'center'}],
 					[{text: "Памятные сувениры",alignment:'center'},{text: "По количеству участников",alignment:'center'}],
+					],
+					headerRows:1,
+					margin:[ 0, 5, 0, 5 ]
+					}
+			},
+			{
+				text: 'ОПИСАНИЕ И СТОИМОСТЬ МЕРОПРИЯТИЯ',
+				style: 'header',
+				alignment: 'center',
+				margin: [ 0, 5, 0, 5 ],
+				pageBreak: 'before'
+			},
+			{
+				table:{
+					widths: ['*', 'auto'],
+					body:[
+					[{text: 'НАИМЕНОВАНИЕ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'},{text: 'ИНФОРМАЦИЯ',bold:true,fillColor:'#9bbb58',color:"white",alignment:'center'}],
+					[{text: "Тип мероприятия",alignment:'center'},{text: ourEvents[typeOfEvent],alignment:'center'}],
+					[{text: "Дата проведения",alignment:'center'},{text: dateControl.value,alignment:'center'}],
+					[{text: "Количество участников",alignment:'center'},{text: numberOfPeople+" детей",alignment:'center'}],
+					[{text: "Вид программы",alignment:'center'},{text: ourProgram[typeOfProgram],alignment:'center'}],
+					[{text: "Стоимость полная",alignment:'center'},{text: price+" рублей",alignment:'center'}],
+					[{text: "Стоимость на человека",alignment:'center'},{text: Math.round(price/numberOfPeople)+" рублей",alignment:'center'}],
 					],
 					headerRows:1,
 					margin:[ 0, 5, 0, 5 ]

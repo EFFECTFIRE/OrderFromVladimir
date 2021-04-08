@@ -106,8 +106,9 @@ h2{
 	display:flex;
 	align-items:center;
 	margin:0 0.2em;
-	font-size:24px;
+	font-size:22px;
 	text-align: center;
+	width: 15%;
 }
 
 .logoname:hover{
@@ -295,6 +296,7 @@ section{
 	padding: 0.25em 0.5em;
 }
 .card{
+	font-weight: bold;
 	justify-content:center;
 	display: flex;
 	margin:1.2em;
@@ -748,14 +750,15 @@ section{
 	.stripbar{font-size:0.75em;}
 	.icons{ width: 1.5em; height:1.5em; }
 }
-@media only screen and (max-width: 1000px)
-{
-	.menu li{font-size:1.2em;}
-	.phone-text{font-size:1em;}
-}
 @media only screen and (max-width:450px){
+	header{
+		height:600px;
+	}
+	.background-mainhead{
+		height: 600px;
+	};
 	.logoname{
-		font-size:1em;
+		font-size:0.4em;
 	}
 	html{
 		font-size:1.1em;
@@ -766,4 +769,9 @@ section{
 	.modal-window{
 		width:80%;
 	}
+}
+@media only screen and (max-width: 1000px)
+{
+	.menu li{font-size:1.2em;}
+	.phone-text{font-size:1em;}
 }
