@@ -523,9 +523,8 @@ section{
 
 .slide-container{
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	margin: 1.5em 3em 1em 3em;
+	margin: 1em auto;
 	flex-wrap: wrap;
 }
 .slide-container h3{
@@ -535,13 +534,14 @@ section{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: center;
 	background-color: rgba(0,0,0,0.3);
-	border-radius: 5%;
-	padding: 20px 50px;
-	margin: 0 auto;
-	max-width: 30%;
-	height: 215px;
-	
+	border-radius: 20px;
+	padding: 3%;
+	margin:0 auto;
+	max-width: 35%;
+	max-height: 10%;
+	word-wrap: break-word;
 }
 .slider{
 	width: 100%;
@@ -630,7 +630,8 @@ section{
 	.menu{display:none;}
 
 	.mob-menu-icon{display:flex;}
-	.slide-container{width: 70%}
+	.slide-container{flex-direction: column;}
+	.slide-container-item{font-size:0.75em; max-width: 50%; align-items: center; margin-bottom: 1em;}
 }
 #valueRange, #date-of-event{
     font-family: "Roboto";
@@ -734,7 +735,7 @@ section{
 	border: none;
 	background-color:#ff7f00;
 	color:white;
-	font-size: 1.5em;
+	font-size: 1.3em;
 
 }
 @media only screen and (max-width: 678px){
@@ -752,7 +753,7 @@ section{
 	.menu li{font-size:1.2em;}
 	.phone-text{font-size:1em;}
 }
-@media only screen and (max-width:350px){
+@media only screen and (max-width:450px){
 	.logoname{
 		font-size:1em;
 	}
